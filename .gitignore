@@ -1,1 +1,3 @@
-SpotifyiOS.framework*
+SpotifyiOS.framework
+SpotifyRecommenderTests
+SpotifyRecommenderUITests
