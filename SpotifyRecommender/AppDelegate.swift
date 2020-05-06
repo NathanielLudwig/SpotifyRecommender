@@ -12,7 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate {
     
     var window: UIWindow?
-    lazy var rootViewController = LoginViewController()
     
     private let SpotifyClientID = "6fbaa216180b4898872744e61e14df49"
     private let SpotifyRedirectURL = URL(string: "spotifyrecommender://spotify-login-callback")!
@@ -56,17 +55,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
         sessionManager.initiateSession(with: scope, options: .default)
     }
     // MARK: - SPTSessionManagerDelegate
-       func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-           print("session connected")
-           NotificationCenter.default.post(name: Notification.Name("sessionConnected"), object: nil)
-       }
-       
-       func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-           print("session connect failed", error)
-       }
-       func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
-           print("session renewed")
-       }
+    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
+        print("session connected")
+        
+        let store = UserDefaults.standard
+        store.setValue(session.accessToken, forKey: "accesstoken")
+        store.setValue(session.refreshToken, forKey: "refreshtoken")
+        
+        NotificationCenter.default.post(name: Notification.Name("sessionConnected"), object: nil)
+    }
+    
+    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
+        print("session connect failed", error)
+    }
+    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
+        print("session renewed")
+    }
     
     
     
