@@ -10,32 +10,34 @@ import UIKit
 
 class GenreTableViewController: UITableViewController {
 
+    var genres: [String]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.cellLayoutMarginsFollowReadableWidth = true
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let genres = genres else { return 0 }
+        return genres.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "genre", for: indexPath)
+        cell.textLabel?.text = genres?[indexPath.row]
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

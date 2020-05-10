@@ -57,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
     // MARK: - SPTSessionManagerDelegate
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         print("session connected")
-        
         let store = UserDefaults.standard
         store.setValue(session.accessToken, forKey: "accesstoken")
         store.setValue(session.refreshToken, forKey: "refreshtoken")

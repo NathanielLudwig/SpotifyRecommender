@@ -9,10 +9,15 @@
 import UIKit
 
 class PlaylistBuilderViewController: UITableViewController {
-
+    var availableGenres: [String]?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.cellLayoutMarginsFollowReadableWidth = true
+        fetchAvailableGenres { (genres) in
+        guard let genres = genres else { return }
+        self.availableGenres = genres
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -76,14 +81,41 @@ class PlaylistBuilderViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "genreSegue" {
+            if let destination = segue.destination as? GenreTableViewController {
+                destination.genres = availableGenres
+            }
+        }
+        
     }
-    */
-
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "genreSegue" {
+            guard availableGenres != nil else { return false }
+        }
+        return true
+    }
+        
+    // MARK: - URL Requests
+    func fetchAvailableGenres(completion: @escaping ([String]?) -> Void){
+        let defaults = UserDefaults.standard
+        let url = URL(string: "https://api.spotify.com/v1/recommendations/available-genre-seeds")!
+        var request = URLRequest(url: url)
+        request.setValue("Bearer " + defaults.string(forKey: "accesstoken")!, forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let genreList = try JSONDecoder().decode([String: [String]].self, from: data)
+                completion(genreList["genres"]!)
+               
+            } catch let error {
+                print(error)
+                completion(nil)
+            }
+        }.resume()
+    }
 }
