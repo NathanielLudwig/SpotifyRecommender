@@ -60,6 +60,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Ke-eZ-eu6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="cJb-68-hJl" kind="relationship" relationship="rootViewController" id="t6s-R5-bwm"/>
                     </connections>
@@ -100,10 +103,13 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="Is9-fa-bBX">
+                                <cells/>
+                            </tableViewSection>
                             <tableViewSection id="Vqd-EI-VCg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="CYn-7Z-VNK" style="IBUITableViewCellStyleDefault" id="m0b-d9-EMx">
-                                        <rect key="frame" x="20" y="97.666667938232422" width="374" height="43.666667938232422"/>
+                                        <rect key="frame" x="20" y="133.66666793823242" width="374" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m0b-d9-EMx" id="vRy-oW-fia">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.666667938232422"/>
@@ -135,7 +141,7 @@
             </objects>
             <point key="canvasLocation" x="1699" y="96"/>
         </scene>
-        <!--Genre Table View Controller-->
+        <!--Choose up to 5 genres-->
         <scene sceneID="AxR-bZ-lIB">
             <objects>
                 <tableViewController id="skN-wE-eQO" customClass="GenreTableViewController" customModule="SpotifyRecommender" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,15 +149,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="genre" textLabel="pow-II-ZNS" style="IBUITableViewCellStyleDefault" id="ozi-gl-H0M">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="genre" textLabel="pow-II-ZNS" style="IBUITableViewCellStyleDefault" id="ozi-gl-H0M">
                                 <rect key="frame" x="20" y="55.333332061767578" width="374" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ozi-gl-H0M" id="CIN-Dv-KOx">
-                                    <rect key="frame" x="0.0" y="0.0" width="330" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pow-II-ZNS">
-                                            <rect key="frame" x="20" y="0.0" width="302" height="43.666667938232422"/>
+                                            <rect key="frame" x="20" y="0.0" width="334" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -166,7 +172,13 @@
                             <outlet property="delegate" destination="skN-wE-eQO" id="QgF-mi-1Z2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XVq-Q2-v8m"/>
+                    <navigationItem key="navigationItem" title="Choose up to 5 genres" id="XVq-Q2-v8m">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" image="trash" catalog="system" id="Cnb-My-Y3E">
+                            <connections>
+                                <action selector="deleteButtonPressed:" destination="skN-wE-eQO" id="cGC-eF-e4H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZ6-o8-6uF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,5 +187,6 @@
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="64" height="56"/>
+        <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
 </document>
