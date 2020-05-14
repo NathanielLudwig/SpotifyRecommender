@@ -11,6 +11,7 @@ import UIKit
 class PlaylistBuilderViewController: UITableViewController {
     var availableGenres: [String]?
     var checkedGenres: [String] = []
+    var selectedAttributes = AttributeTypes.shared.getSelectedAttributes()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.cellLayoutMarginsFollowReadableWidth = true
@@ -18,45 +19,46 @@ class PlaylistBuilderViewController: UITableViewController {
             guard let genres = genres else { return }
             self.availableGenres = genres
         }
+        tableView.register(SliderTableViewCell.nib(), forCellReuseIdentifier: "SliderCell")
     }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if section == 0 || section == 2{
-            return 1
-        } else {
-            return 0
+        if section == 1 {
+            return selectedAttributes.count
         }
+        return super.tableView(tableView, numberOfRowsInSection: section)
     }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionName = ""
-        switch section{
-            case 0:
-                if checkedGenres.count > 0 {
-                    sectionName = "Selected Genres: \(checkedGenres.joined(separator: ", "))"
-                }
-            default:
-                sectionName = ""
+        if checkedGenres.count > 0 && section == 0 {
+            sectionName = "Selected Genres: \(checkedGenres.joined(separator: ", "))"
         }
         return sectionName
     }
     
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SliderCell", for: indexPath) as! SliderTableViewCell
+            cell.configure(with: selectedAttributes[indexPath.row].name , attribute: selectedAttributes[indexPath.row])
+            return cell
+        }
+        return super.tableView(tableView, cellForRowAt: indexPath)
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1{
+            return 75
+        }
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     /*
      // Override to support conditional editing of the table view.
@@ -66,17 +68,19 @@ class PlaylistBuilderViewController: UITableViewController {
      }
      */
     
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let index = AttributeTypes.shared.values.firstIndex(where: {$0.name == selectedAttributes[indexPath.row].name}) else { return }
+            AttributeTypes.shared.values[index].isSelected = false
+            selectedAttributes = AttributeTypes.shared.getSelectedAttributes()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
     
     /*
      // Override to support rearranging the table view.
@@ -105,6 +109,12 @@ class PlaylistBuilderViewController: UITableViewController {
                 destination.delegate = self
             }
         }
+        if segue.identifier == "attributeSegue" {
+            if let destination = segue.destination.children[0] as? AttributeTableViewController {
+                destination.delegate = self
+            }
+        }
+        
     }
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "genreSegue" {
@@ -132,7 +142,12 @@ class PlaylistBuilderViewController: UITableViewController {
         }.resume()
     }
 }
-extension PlaylistBuilderViewController: GenreDelegate {
+extension PlaylistBuilderViewController: GenreDelegate, AttributeViewDelegate {
+    func addedNewAttribute() {
+        self.selectedAttributes = AttributeTypes.shared.getSelectedAttributes()
+        self.tableView.reloadData()
+    }
+    
     func saveCheckedGenres(genreList: [String]) {
         self.checkedGenres = genreList
         self.tableView.reloadData()

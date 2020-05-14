@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7197F3A246A5CCA006B7296 /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7197F38246A5CC9006B7296 /* SliderTableViewCell.swift */; };
+		B7197F3B246A5CCA006B7296 /* SliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7197F39246A5CC9006B7296 /* SliderTableViewCell.xib */; };
+		B7197F3D246B0C1B006B7296 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7197F3C246B0C1B006B7296 /* Attribute.swift */; };
+		B7197F3F246CED07006B7296 /* AttributeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7197F3E246CED07006B7296 /* AttributeTableViewController.swift */; };
 		B792F7FF245A24A20015D516 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B792F7FE245A24A10015D516 /* SpotifyiOS.framework */; };
 		B7A8C24424623E680073B01E /* PlaylistBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8C24324623E680073B01E /* PlaylistBuilderViewController.swift */; };
 		B7A8C24624623FCA0073B01E /* GenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8C24524623FCA0073B01E /* GenreTableViewController.swift */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B7197F38246A5CC9006B7296 /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
+		B7197F39246A5CC9006B7296 /* SliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderTableViewCell.xib; sourceTree = "<group>"; };
+		B7197F3C246B0C1B006B7296 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		B7197F3E246CED07006B7296 /* AttributeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeTableViewController.swift; sourceTree = "<group>"; };
 		B792F7FE245A24A10015D516 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		B7A8C24324623E680073B01E /* PlaylistBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBuilderViewController.swift; sourceTree = "<group>"; };
 		B7A8C24524623FCA0073B01E /* GenreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTableViewController.swift; sourceTree = "<group>"; };
@@ -110,7 +118,11 @@
 				B7AE34102456990C00E14233 /* AppDelegate.swift */,
 				B7AE34142456990C00E14233 /* LoginViewController.swift */,
 				B7AE34162456990C00E14233 /* Main.storyboard */,
+				B7197F38246A5CC9006B7296 /* SliderTableViewCell.swift */,
+				B7197F39246A5CC9006B7296 /* SliderTableViewCell.xib */,
+				B7197F3C246B0C1B006B7296 /* Attribute.swift */,
 				B7A8C24324623E680073B01E /* PlaylistBuilderViewController.swift */,
+				B7197F3E246CED07006B7296 /* AttributeTableViewController.swift */,
 				B7A8C24524623FCA0073B01E /* GenreTableViewController.swift */,
 				B7AE34192456991000E14233 /* Assets.xcassets */,
 				B7AE341B2456991000E14233 /* LaunchScreen.storyboard */,
@@ -243,6 +255,7 @@
 			files = (
 				B7AE341D2456991000E14233 /* LaunchScreen.storyboard in Resources */,
 				B7AE341A2456991000E14233 /* Assets.xcassets in Resources */,
+				B7197F3B246A5CCA006B7296 /* SliderTableViewCell.xib in Resources */,
 				B7AE34182456990C00E14233 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,10 +281,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7197F3D246B0C1B006B7296 /* Attribute.swift in Sources */,
 				B7AE34152456990C00E14233 /* LoginViewController.swift in Sources */,
 				B7A8C24624623FCA0073B01E /* GenreTableViewController.swift in Sources */,
+				B7197F3F246CED07006B7296 /* AttributeTableViewController.swift in Sources */,
 				B7A8C24424623E680073B01E /* PlaylistBuilderViewController.swift in Sources */,
 				B7AE34112456990C00E14233 /* AppDelegate.swift in Sources */,
+				B7197F3A246A5CCA006B7296 /* SliderTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
