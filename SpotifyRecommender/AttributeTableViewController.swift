@@ -34,7 +34,7 @@ class AttributeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = unselectedAttributes[indexPath.row].name
+        cell.textLabel?.text = unselectedAttributes[indexPath.row].name.capitalizingFirstLetter()
         cell.detailTextLabel?.text = unselectedAttributes[indexPath.row].description
         return cell
     }

@@ -20,7 +20,7 @@ class SliderTableViewCell: UITableViewCell {
     
     public func configure(with title: String, attribute: Attribute) {
         self.attribute = attribute
-        attributeLabel.text = title
+        attributeLabel.text = title.capitalizingFirstLetter()
         attributeSlider.minimumValue = attribute.minValue
         attributeSlider.maximumValue = attribute.maxValue
         attributeSlider.value = attribute.value
@@ -46,4 +46,13 @@ class SliderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }

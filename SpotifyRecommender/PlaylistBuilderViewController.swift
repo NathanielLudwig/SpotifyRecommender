@@ -20,6 +20,7 @@ class PlaylistBuilderViewController: UITableViewController {
             self.availableGenres = genres
         }
         tableView.register(SliderTableViewCell.nib(), forCellReuseIdentifier: "SliderCell")
+        self.navigationItem.leftBarButtonItem = editButtonItem
     }
     // MARK: - Table view data source
     
@@ -60,13 +61,15 @@ class PlaylistBuilderViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 1{
+            return true
+        }
+        return false
+    }
+    
     
     
     // Override to support editing the table view.
@@ -96,6 +99,10 @@ class PlaylistBuilderViewController: UITableViewController {
      return true
      }
      */
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+        tableView.setEditing(editing, animated: true)
+    }
     
     
     // MARK: - Navigation
@@ -114,11 +121,25 @@ class PlaylistBuilderViewController: UITableViewController {
                 destination.delegate = self
             }
         }
+        if segue.identifier == "createSegue" {
+            if let destination = segue.destination as? RecommendationViewController {
+                destination.selectedGenres = checkedGenres
+            }
+        }
         
     }
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "genreSegue" {
             guard availableGenres != nil else { return false }
+        }
+        if identifier == "createSegue" {
+            if checkedGenres.count == 0 {
+                let controller = UIAlertController(title: "Error", message: "Please select at least one genre!", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                controller.addAction(action)
+                self.present(controller, animated: true)
+                return false
+            }
         }
         return true
     }
@@ -153,3 +174,4 @@ extension PlaylistBuilderViewController: GenreDelegate, AttributeViewDelegate {
         self.tableView.reloadData()
     }
 }
+

@@ -48,7 +48,7 @@ class GenreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "genre", for: indexPath)
-        cell.textLabel?.text = genres?[indexPath.row]
+        cell.textLabel?.text = genres?[indexPath.row].capitalizingFirstLetter()
         var checked = false
         for genre in checkedGenres {
             if genre == genres?[indexPath.row] {
