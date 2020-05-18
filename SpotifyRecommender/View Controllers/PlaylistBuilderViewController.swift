@@ -9,12 +9,17 @@
 import UIKit
 
 class PlaylistBuilderViewController: UITableViewController {
+    
+    @IBOutlet weak var numberCell: UITableViewCell!
     var availableGenres: [String]?
     var checkedGenres: [String] = []
     var selectedAttributes = AttributeTypes.shared.getSelectedAttributes()
+    var numberOfSongs: Int = 20
     override func viewDidLoad() {
+        numberCell.detailTextLabel?.text = "\(numberOfSongs)"
         super.viewDidLoad()
         self.tableView.cellLayoutMarginsFollowReadableWidth = true
+        
         fetchAvailableGenres { (genres) in
             guard let genres = genres else { return }
             self.availableGenres = genres
@@ -124,6 +129,13 @@ class PlaylistBuilderViewController: UITableViewController {
         if segue.identifier == "createSegue" {
             if let destination = segue.destination as? RecommendationViewController {
                 destination.selectedGenres = checkedGenres
+                destination.numberOfSongs = numberOfSongs
+            }
+        }
+        if segue.identifier == "numberSegue" {
+            if let destination = segue.destination as? NumberViewController {
+                destination.selectedNumber = numberOfSongs
+                destination.delegate = self
             }
         }
         
@@ -163,7 +175,7 @@ class PlaylistBuilderViewController: UITableViewController {
         }.resume()
     }
 }
-extension PlaylistBuilderViewController: GenreDelegate, AttributeViewDelegate {
+extension PlaylistBuilderViewController: GenreDelegate, AttributeViewDelegate, NumberDelegate {
     func addedNewAttribute() {
         self.selectedAttributes = AttributeTypes.shared.getSelectedAttributes()
         self.tableView.reloadData()
@@ -173,5 +185,10 @@ extension PlaylistBuilderViewController: GenreDelegate, AttributeViewDelegate {
         self.checkedGenres = genreList
         self.tableView.reloadData()
     }
+    func savedNumber(num: Int) {
+        self.numberOfSongs = num
+        numberCell.detailTextLabel?.text = "\(numberOfSongs)"
+    }
+    
 }
 

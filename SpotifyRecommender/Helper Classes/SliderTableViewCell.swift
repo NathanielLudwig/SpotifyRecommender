@@ -30,7 +30,6 @@ class SliderTableViewCell: UITableViewCell {
     @IBOutlet weak var attributeSlider: UISlider!
     
     override func awakeFromNib() {
-        
         super.awakeFromNib()
         // Initialization code
         

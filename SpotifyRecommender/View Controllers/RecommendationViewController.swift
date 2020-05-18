@@ -11,12 +11,23 @@ import UIKit
 class RecommendationViewController: UITableViewController {
     
     var selectedGenres: [String] = []
-    
+    var tracks: [Track] = []
+    var numberOfSongs = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchRecommendations(with: selectedGenres, attributes: AttributeTypes.shared.getSelectedAttributes())
+        self.tableView.cellLayoutMarginsFollowReadableWidth = true
+        fetchRecommendations(with: selectedGenres, attributes: AttributeTypes.shared.getSelectedAttributes()) { (recommendations) in
+            guard let recommendations = recommendations else { return }
+            self.updateUI(with: recommendations)
+        }
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    func updateUI(with results: Recommendations) {
+        DispatchQueue.main.async {
+            self.tracks = results.tracks
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -26,18 +37,31 @@ class RecommendationViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return tracks.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TrackTableViewCell
+        if tracks[indexPath.row].album.images.count > 0 {
+        fetchAlbumArt(with: tracks[indexPath.row].album.images[1].url) { (image) in
+            guard let image = image else { return }
+            DispatchQueue.main.async {
+                cell.configure(with: self.tracks[indexPath.row], image: image)
+            }
+        }
+        } else {
+            cell.configure(with: self.tracks[indexPath.row], image: #imageLiteral(resourceName: "placeholderart"))
+        }
         return cell
     }
-    */
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 69
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -86,13 +110,13 @@ class RecommendationViewController: UITableViewController {
     
     // MARK: - Network Requests
     
-    func fetchRecommendations(with genres: [String], attributes: [Attribute]) {
+    func fetchRecommendations(with genres: [String], attributes: [Attribute], completion: @escaping (Recommendations?) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.spotify.com"
         components.path = "/v1/recommendations"
         let joinedGenres = selectedGenres.joined(separator: ",")
-        components.queryItems = [URLQueryItem(name: "limit", value: "10"), URLQueryItem(name: "seed_genres", value: joinedGenres)]
+        components.queryItems = [URLQueryItem(name: "limit", value: "\(numberOfSongs)"), URLQueryItem(name: "seed_genres", value: joinedGenres)]
         for attribute in attributes {
             if attribute.name == "popularity" {
                 let query = URLQueryItem(name: "target_\(attribute.name)", value: "\(Int(attribute.value))")
@@ -103,15 +127,30 @@ class RecommendationViewController: UITableViewController {
             }
         }
         let defaults = UserDefaults.standard
-        print(components.url!)
         var request = URLRequest(url: components.url!)
         request.setValue("Bearer " + defaults.string(forKey: "accesstoken")!, forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
-            print(String(data: data, encoding: .utf8))
-            //let recommendations = JSONDecoder().decode(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: data)
+            do {
+                let recommendations = try JSONDecoder().decode(Recommendations.self, from: data)
+                completion(recommendations)
+            } catch {
+                print("error")
+                completion(nil)
+            }
         }.resume()
         
     }
-
+    func fetchAlbumArt(with url: String, completion: @escaping (UIImage?) -> Void) {
+        let imageurl = URL(string: url)!
+        URLSession.shared.dataTask(with: imageurl) { (data, response, error) in
+            if let data = data, let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                print("error fetching image")
+                completion(nil)
+            }
+        }.resume()
+    }
+    
 }
