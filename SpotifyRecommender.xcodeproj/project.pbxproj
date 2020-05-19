@@ -15,6 +15,8 @@
 		B7197F432471E1C5006B7296 /* Recommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7197F422471E1C5006B7296 /* Recommendations.swift */; };
 		B7197F4524720440006B7296 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7197F4424720440006B7296 /* TrackTableViewCell.swift */; };
 		B7197F4D24722EF1006B7296 /* NumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7197F4C24722EF1006B7296 /* NumberViewController.swift */; };
+		B7197F4F24733E8E006B7296 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7197F4E24733E8E006B7296 /* Export.swift */; };
+		B7197F5124733EB0006B7296 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7197F5024733EB0006B7296 /* ExportViewController.swift */; };
 		B792F7FF245A24A20015D516 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B792F7FE245A24A10015D516 /* SpotifyiOS.framework */; };
 		B7A8C24424623E680073B01E /* PlaylistBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8C24324623E680073B01E /* PlaylistBuilderViewController.swift */; };
 		B7A8C24624623FCA0073B01E /* GenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8C24524623FCA0073B01E /* GenreTableViewController.swift */; };
@@ -53,6 +55,8 @@
 		B7197F422471E1C5006B7296 /* Recommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendations.swift; sourceTree = "<group>"; };
 		B7197F4424720440006B7296 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		B7197F4C24722EF1006B7296 /* NumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberViewController.swift; sourceTree = "<group>"; };
+		B7197F4E24733E8E006B7296 /* Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
+		B7197F5024733EB0006B7296 /* ExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
 		B792F7FE245A24A10015D516 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		B7A8C24324623E680073B01E /* PlaylistBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBuilderViewController.swift; sourceTree = "<group>"; };
 		B7A8C24524623FCA0073B01E /* GenreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTableViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				B7A8C24524623FCA0073B01E /* GenreTableViewController.swift */,
 				B7197F4C24722EF1006B7296 /* NumberViewController.swift */,
 				B7AE34142456990C00E14233 /* LoginViewController.swift */,
+				B7197F5024733EB0006B7296 /* ExportViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 			children = (
 				B7197F3C246B0C1B006B7296 /* Attribute.swift */,
 				B7197F422471E1C5006B7296 /* Recommendations.swift */,
+				B7197F4E24733E8E006B7296 /* Export.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +328,8 @@
 				B7A8C24624623FCA0073B01E /* GenreTableViewController.swift in Sources */,
 				B7197F3F246CED07006B7296 /* AttributeTableViewController.swift in Sources */,
 				B7197F432471E1C5006B7296 /* Recommendations.swift in Sources */,
+				B7197F4F24733E8E006B7296 /* Export.swift in Sources */,
+				B7197F5124733EB0006B7296 /* ExportViewController.swift in Sources */,
 				B7197F4524720440006B7296 /* TrackTableViewCell.swift in Sources */,
 				B7A8C24424623E680073B01E /* PlaylistBuilderViewController.swift in Sources */,
 				B7197F4124719A26006B7296 /* RecommendationViewController.swift in Sources */,

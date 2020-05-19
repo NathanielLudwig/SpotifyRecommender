@@ -7,13 +7,19 @@
 //
 
 import UIKit
-
+protocol TrackCellDelegate {
+    func moreButtonPressed(at track: Track, button: UIButton)
+}
 class TrackTableViewCell: UITableViewCell {
 
     @IBOutlet weak var albumArt: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    var track: Track?
+    
+    var delegate: TrackCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,8 +40,14 @@ class TrackTableViewCell: UITableViewCell {
         albumArt.isHidden = false
         titleLabel.isHidden = false
         artistLabel.isHidden = false
+        self.track = track
     }
 
+    @IBAction func moreButtonPressed(_ sender: Any) {
+        if let track = track {
+            delegate?.moreButtonPressed(at: track, button: sender as! UIButton)
+        }
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

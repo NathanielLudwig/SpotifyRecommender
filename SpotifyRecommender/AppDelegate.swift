@@ -48,10 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SPTSessionManagerDelegate
         
     }
     func applicationDidBecomeActive(_ application: UIApplication) {
-        
+
     }
     @objc func createSession(){
-        let scope: SPTScope = [.playlistReadPrivate]
+        let scope: SPTScope = [.playlistReadPrivate, .playlistModifyPublic, .playlistReadPrivate]
         sessionManager.initiateSession(with: scope, options: .default)
     }
     // MARK: - SPTSessionManagerDelegate
