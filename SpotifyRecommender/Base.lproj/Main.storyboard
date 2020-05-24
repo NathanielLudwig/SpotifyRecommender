@@ -32,16 +32,38 @@
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qmQ-nb-Gpp"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="3DY-Dc-vDi">
+                                <rect key="frame" x="188.66666666666666" y="429.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To begin, connect your Spotify account." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xP-gI-unx">
+                                <rect key="frame" x="67.333333333333343" y="395" width="279.66666666666663" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jII-cH-ih2">
+                                <rect key="frame" x="110.66666666666669" y="332" width="193" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="3DY-Dc-vDi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4OZ-Ph-eBL"/>
+                            <constraint firstItem="i4J-sa-uO3" firstAttribute="top" secondItem="1xP-gI-unx" secondAttribute="bottom" constant="15" id="8Ec-wL-6id"/>
                             <constraint firstItem="i4J-sa-uO3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EIa-U5-Jjj"/>
                             <constraint firstItem="i4J-sa-uO3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RwK-Q4-V1Z"/>
+                            <constraint firstItem="1xP-gI-unx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UP1-KB-eOh"/>
+                            <constraint firstItem="jII-cH-ih2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ct5-WJ-eMJ"/>
+                            <constraint firstItem="1xP-gI-unx" firstAttribute="top" secondItem="jII-cH-ih2" secondAttribute="bottom" constant="15" id="e7z-MX-SQ7"/>
+                            <constraint firstItem="3DY-Dc-vDi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ksv-TT-v8j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="i4J-sa-uO3" id="QMN-OY-Q3i"/>
+                        <outlet property="spinner" destination="3DY-Dc-vDi" id="C1N-fa-hMl"/>
                         <segue destination="FNj-xO-Y47" kind="presentation" identifier="homeSegue" modalPresentationStyle="fullScreen" id="J3Q-Nd-goo"/>
                     </connections>
                 </viewController>
@@ -132,7 +154,7 @@
                             </tableViewSection>
                             <tableViewSection id="Is9-fa-bBX">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" id="0gX-9H-8KE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SliderCell" id="0gX-9H-8KE">
                                         <rect key="frame" x="20" y="141.33333587646484" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0gX-9H-8KE" id="g9v-Oc-v71">
@@ -140,7 +162,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" id="MAT-T6-nre">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SliderCell" id="MAT-T6-nre">
                                         <rect key="frame" x="20" y="185.33333587646484" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MAT-T6-nre" id="gXs-p4-jhe">
@@ -148,7 +170,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" id="Eft-gg-bw9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SliderCell" id="Eft-gg-bw9">
                                         <rect key="frame" x="20" y="229.33333587646484" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eft-gg-bw9" id="fwj-Lk-BeZ">
@@ -156,7 +178,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" id="mii-Jb-dTG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SliderCell" id="mii-Jb-dTG">
                                         <rect key="frame" x="20" y="273.33333587646484" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mii-Jb-dTG" id="63c-BX-syJ">
@@ -164,7 +186,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" id="qHC-wa-SfE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SliderCell" id="qHC-wa-SfE">
                                         <rect key="frame" x="20" y="317.33333587646484" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qHC-wa-SfE" id="ox4-lq-e9n">
@@ -172,7 +194,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" id="2U7-71-N1c">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SliderCell" id="2U7-71-N1c">
                                         <rect key="frame" x="20" y="361.33333587646484" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2U7-71-N1c" id="g6y-ZW-ojG">
@@ -180,7 +202,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" id="zYY-pj-bJU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SliderCell" id="zYY-pj-bJU">
                                         <rect key="frame" x="20" y="405.33333587646484" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zYY-pj-bJU" id="XHK-fa-Hgp">
@@ -188,7 +210,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SliderCell" id="WFv-Z2-DJN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SliderCell" id="WFv-Z2-DJN">
                                         <rect key="frame" x="20" y="449.33333587646484" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WFv-Z2-DJN" id="r4U-cW-pH7">
@@ -380,56 +402,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ykh-IH-yyb">
-                                <rect key="frame" x="20" y="56" width="374" height="139"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjl-Gb-sDT">
+                                <rect key="frame" x="106" y="164" width="202" height="40"/>
+                                <color key="backgroundColor" red="0.1137254902" green="0.72549019609999998" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="32" minY="11" maxX="32" maxY="11"/>
+                                <state key="normal" title="CREATE PLAYLIST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createButtonPressed:" destination="Y6L-PJ-aRZ" eventType="touchUpInside" id="wgo-q5-0Hj"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="nmD-RK-hUE">
+                                <rect key="frame" x="188.66666666666666" y="402.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TGF-Ee-Cm8">
+                                <rect key="frame" x="20" y="66" width="374" height="68"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TGF-Ee-Cm8">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="69"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2A8-zB-Lgh">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="34.666666666666664"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWK-64-dYc">
-                                                <rect key="frame" x="0.0" y="34.666666666666671" width="374" height="34.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="69" id="JKM-x9-uLK"/>
-                                        </constraints>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjl-Gb-sDT">
-                                        <rect key="frame" x="0.0" y="89" width="374" height="50"/>
-                                        <color key="backgroundColor" red="0.1137254902" green="0.72549019609999998" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Rfh-LJ-5Rk"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                        <inset key="contentEdgeInsets" minX="32" minY="11" maxX="32" maxY="11"/>
-                                        <state key="normal" title="CREATE PLAYLIST">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="createButtonPressed:" destination="Y6L-PJ-aRZ" eventType="touchUpInside" id="wgo-q5-0Hj"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2A8-zB-Lgh">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWK-64-dYc">
+                                        <rect key="frame" x="0.0" y="34" width="374" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ykh-IH-yyb" secondAttribute="trailing" id="3uF-fh-v4i"/>
-                            <constraint firstItem="Ykh-IH-yyb" firstAttribute="top" secondItem="uoP-cm-cuX" secondAttribute="topMargin" id="RSa-9T-QfB"/>
-                            <constraint firstItem="Ykh-IH-yyb" firstAttribute="leading" secondItem="uoP-cm-cuX" secondAttribute="leadingMargin" id="TcQ-Dz-uTh"/>
+                            <constraint firstItem="TGF-Ee-Cm8" firstAttribute="top" secondItem="4Q8-gf-bYy" secondAttribute="top" constant="10" id="Cxw-yE-cz9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TGF-Ee-Cm8" secondAttribute="trailing" id="IaM-bW-Mpv"/>
+                            <constraint firstItem="fjl-Gb-sDT" firstAttribute="centerX" secondItem="uoP-cm-cuX" secondAttribute="centerX" id="S8b-15-zzE"/>
+                            <constraint firstItem="fjl-Gb-sDT" firstAttribute="top" secondItem="TGF-Ee-Cm8" secondAttribute="bottom" constant="30" id="UQu-85-CtS"/>
+                            <constraint firstItem="TGF-Ee-Cm8" firstAttribute="centerX" secondItem="uoP-cm-cuX" secondAttribute="centerX" id="ZCH-FH-Vdj"/>
+                            <constraint firstItem="nmD-RK-hUE" firstAttribute="centerY" secondItem="uoP-cm-cuX" secondAttribute="centerY" id="bYg-1L-Pcx"/>
+                            <constraint firstItem="TGF-Ee-Cm8" firstAttribute="leading" secondItem="uoP-cm-cuX" secondAttribute="leadingMargin" id="dR9-47-d98"/>
+                            <constraint firstItem="nmD-RK-hUE" firstAttribute="centerX" secondItem="uoP-cm-cuX" secondAttribute="centerX" id="eXa-jf-tk6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4Q8-gf-bYy"/>
                     </view>
@@ -441,6 +460,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="button" destination="fjl-Gb-sDT" id="WCm-gk-lG5"/>
+                        <outlet property="label" destination="2A8-zB-Lgh" id="Biu-fu-ev9"/>
+                        <outlet property="spinner" destination="nmD-RK-hUE" id="5nB-Ei-63r"/>
                         <outlet property="textField" destination="HWK-64-dYc" id="hDf-eh-dGU"/>
                     </connections>
                 </viewController>

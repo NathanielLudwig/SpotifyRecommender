@@ -19,6 +19,7 @@ class SliderTableViewCell: UITableViewCell {
     }
     
     public func configure(with title: String, attribute: Attribute) {
+        self.selectionStyle = .none
         self.attribute = attribute
         attributeLabel.text = title.capitalizingFirstLetter()
         attributeSlider.minimumValue = attribute.minValue

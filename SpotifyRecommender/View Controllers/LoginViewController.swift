@@ -11,7 +11,8 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
-
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(segueFromLogin), name: NSNotification.Name(rawValue: "sessionConnected"), object: nil)
         super.viewDidLoad()
@@ -25,6 +26,8 @@ class LoginViewController: UIViewController {
         
     }
     @IBAction func loginButtonPressed(_ sender: Any) {
+        loginButton.isHidden = true
+        spinner.startAnimating()
         NotificationCenter.default.post(name: Notification.Name("loginButtonPressed"), object: nil)
     }
     

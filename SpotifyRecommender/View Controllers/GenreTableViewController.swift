@@ -65,7 +65,7 @@ class GenreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let cell = tableView.cellForRow(at: indexPath), let genre = genres?[indexPath.row]{
+        if let cell = tableView.cellForRow(at: indexPath), let genre = genres?[indexPath.row] {
             if cell.accessoryType == .checkmark {
                 cell.accessoryType = .none
                 checkedGenres.removeAll { $0 == genre }

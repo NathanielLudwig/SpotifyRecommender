@@ -520,7 +520,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.ephs.SpotifyRecommender;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ephs2020.songRecommender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyRecommender/SpotifyRecommender-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -544,7 +544,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.ephs.SpotifyRecommender;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ephs2020.songRecommender;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyRecommender/SpotifyRecommender-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

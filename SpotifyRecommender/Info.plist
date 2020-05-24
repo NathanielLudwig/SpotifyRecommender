@@ -22,7 +22,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>edu.ephs.SpotifyRecommender</string>
+			<string>edu.ephs2020.songRecommender</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>spotifyrecommender</string>

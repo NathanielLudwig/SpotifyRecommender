@@ -11,6 +11,9 @@ import UIKit
 class ExportViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
     
     var trackids: [String] = []
     
@@ -23,6 +26,10 @@ class ExportViewController: UIViewController {
     }
     
     @IBAction func createButtonPressed(_ sender: Any) {
+        textField.isHidden = true
+        label.isHidden = true
+        button.isHidden = true
+        spinner.startAnimating()
         guard let text = textField.text else { return }
         if trackids.count > 0 {
             fetchUserID { (id) in
@@ -33,7 +40,18 @@ class ExportViewController: UIViewController {
                     self.addSongs(id: playlistid) {
                         print("songs added")
                         DispatchQueue.main.async {
-                            self.dismiss(animated: true, completion: nil)
+                            let alert = UIAlertController(title: "Playlist Export Complete!", message: "Would you like to open your playlist in the Spotify app?", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Open In App", style: .default, handler: { (action) in
+                                let url = URL(string: "spotify:playlist:" + playlistid)!
+                                if UIApplication.shared.canOpenURL(url) {
+                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                }
+                               self.dismiss(animated: true, completion: nil)
+                            }))
+                            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+                                self.dismiss(animated: true, completion: nil)
+                            }))
+                            self.present(alert, animated: true, completion: nil)
                         }
                     }
                 }
