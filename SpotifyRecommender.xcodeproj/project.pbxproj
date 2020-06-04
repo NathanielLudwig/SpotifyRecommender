@@ -60,7 +60,7 @@
 		B792F7FE245A24A10015D516 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		B7A8C24324623E680073B01E /* PlaylistBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistBuilderViewController.swift; sourceTree = "<group>"; };
 		B7A8C24524623FCA0073B01E /* GenreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTableViewController.swift; sourceTree = "<group>"; };
-		B7AE340D2456990C00E14233 /* SpotifyRecommender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotifyRecommender.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7AE340D2456990C00E14233 /* Recommendify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recommendify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7AE34102456990C00E14233 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7AE34142456990C00E14233 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B7AE34172456990C00E14233 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		B7AE340E2456990C00E14233 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B7AE340D2456990C00E14233 /* SpotifyRecommender.app */,
+				B7AE340D2456990C00E14233 /* Recommendify.app */,
 				B7AE34232456991100E14233 /* SpotifyRecommenderTests.xctest */,
 				B7AE342E2456991100E14233 /* SpotifyRecommenderUITests.xctest */,
 			);
@@ -208,7 +208,7 @@
 			);
 			name = SpotifyRecommender;
 			productName = SpotifyRecommender;
-			productReference = B7AE340D2456990C00E14233 /* SpotifyRecommender.app */;
+			productReference = B7AE340D2456990C00E14233 /* Recommendify.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B7AE34222456991100E14233 /* SpotifyRecommenderTests */ = {
@@ -509,6 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,9 +520,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ephs2020.songRecommender;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Recommendify;
 				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyRecommender/SpotifyRecommender-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -533,6 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -543,9 +546,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ephs2020.songRecommender;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Recommendify;
 				SWIFT_OBJC_BRIDGING_HEADER = "SpotifyRecommender/SpotifyRecommender-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

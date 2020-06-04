@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B7AE340C2456990B00E14233"
-               BuildableName = "SpotifyRecommender.app"
+               BuildableName = "Recommendify.app"
                BlueprintName = "SpotifyRecommender"
                ReferencedContainer = "container:SpotifyRecommender.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B7AE340C2456990B00E14233"
-            BuildableName = "SpotifyRecommender.app"
+            BuildableName = "Recommendify.app"
             BlueprintName = "SpotifyRecommender"
             ReferencedContainer = "container:SpotifyRecommender.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B7AE340C2456990B00E14233"
-            BuildableName = "SpotifyRecommender.app"
+            BuildableName = "Recommendify.app"
             BlueprintName = "SpotifyRecommender"
             ReferencedContainer = "container:SpotifyRecommender.xcodeproj">
          </BuildableReference>
